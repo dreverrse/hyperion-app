@@ -1,0 +1,23 @@
+{
+  "name": "hyperion-app",
+  "version": "1.0.0",
+  "description": "Hyperion - Fintech Mobile App",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx serve .",
+    "cap:init": "npx cap init Hyperion com.hyperion.app --web-dir .",
+    "cap:add": "npx cap add android",
+    "cap:sync": "npx cap sync",
+    "cap:open": "npx cap open android",
+    "build:apk": "cd android && ./gradlew assembleDebug"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@capacitor/android": "^6.2.2",
+    "@capacitor/cli": "^6.2.2",
+    "@capacitor/core": "^6.2.2"
+  }
+}
