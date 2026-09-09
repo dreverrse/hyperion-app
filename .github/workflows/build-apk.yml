@@ -33,6 +33,9 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
       
+    - name: Build web assets
+      run: npm run build
+        
     - name: Add Android platform
       run: |
         npx cap add android && npx cap sync android
