@@ -5,5 +5,11 @@
   "server": {
     "androidScheme": "https"
   },
-  "plugins": {}
+  "plugins": {
+    "StatusBar": {
+      "overlaysWebView": true,
+      "style": "DARK",
+      "backgroundColor": "#121214"
+    }
+  }
 }

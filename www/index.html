@@ -44,19 +44,6 @@
 <!-- Mobile Device Frame -->
 <div class="relative w-full max-w-[393px] h-screen sm:h-[844px] bg-[#121214] sm:rounded-[48px] overflow-hidden flex flex-col shadow-2xl border border-neutral-800">
 
-    <!-- iOS Status Bar -->
-    <header class="w-full pt-3 px-7 pb-2 flex justify-between items-center text-white shrink-0 select-none z-30">
-        <span class="text-[15px] font-semibold tracking-tight">19:27</span>
-        <div class="h-4 w-20 bg-transparent rounded-full"></div>
-        <div class="flex items-center space-x-2 text-xs">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 2c3.87 0 7 3.13 7 7 0 1.55-.51 2.99-1.37 4.16L12 19.67l-5.63-3.51C5.51 14.99 5 13.55 5 12c0-3.87 3.13-7 7-7z"/></svg>
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/></svg>
-            <div class="w-5 h-2.5 border border-white rounded-[4px] p-0.5 flex items-center">
-                <div class="w-full h-full bg-white rounded-[1px]"></div>
-            </div>
-        </div>
-    </header>
-
     <!-- ===== SCREEN 1: DASHBOARD ===== -->
     <main id="screen-dashboard" class="screen active flex-1 overflow-y-auto no-scrollbar px-6 pt-2 pb-24 flex flex-col space-y-6">
         <!-- Top Bar -->
@@ -377,6 +364,16 @@
 
 <!-- Navigation Script -->
 <script>
+    function initStatusBar() {
+        if (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) {
+            var StatusBar = window.Capacitor.Plugins && window.Capacitor.Plugins.StatusBar;
+            if (StatusBar) {
+                StatusBar.setOverlaysWebView({ overlay: true }).catch(function () {});
+                StatusBar.hide().catch(function () {});
+            }
+        }
+    }
+
     function showScreen(screen) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById('screen-' + screen).classList.add('active');
@@ -406,6 +403,7 @@
             }
         });
     }
+    initStatusBar();
     showScreen('dashboard');
 </script>
 </body>
