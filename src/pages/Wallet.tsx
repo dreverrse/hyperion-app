@@ -1,6 +1,8 @@
+import type { CSSProperties } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronLeft, Sliders, Share, Plus } from '../components/icons';
 
-const stripedStyle = {
+const stripedStyle: CSSProperties = {
   background: '#f1f4f8',
   backgroundImage:
     'repeating-linear-gradient(-45deg, rgba(220,226,233,.95), rgba(220,226,233,.95) 7px, rgba(238,242,247,.5) 7px, rgba(238,242,247,.5) 14px)',
@@ -17,7 +19,7 @@ const barLabels = [
 const avatarEmoji = ['👨🏻‍💼', '🧔🏾', '🤠', '🧔🏻', '🧓🏼'];
 const avatarBg = ['bg-orange-100', 'bg-red-100', 'bg-amber-100', 'bg-yellow-100', 'bg-gray-200'];
 
-function ContributorBar({ index }) {
+function ContributorBar({ index }: { index: number }) {
   if (index === 0) {
     return <div className="bg-white h-full shadow-sm rounded-lg" />;
   }
@@ -32,18 +34,17 @@ function ContributorBar({ index }) {
   );
 }
 
-export default function Wallet({ onNavigate }) {
+export default function Wallet() {
   return (
     <main className="flex-1 overflow-y-auto no-scrollbar space-y-4 pb-24 flex flex-col">
       <nav className="flex items-center justify-between px-6 pt-2">
-        <button
-          type="button"
+        <Link
+          to="/"
           aria-label="Back to dashboard"
-          onClick={() => onNavigate('dashboard')}
           className="w-11 h-11 rounded-full bg-[#1E1F24] flex items-center justify-center text-neutral-300 hover:text-white transition-colors active:scale-95"
         >
           <ChevronLeft className="w-5 h-5" />
-        </button>
+        </Link>
         <h1 className="text-white text-lg font-bold tracking-tight">Wallet</h1>
         <button
           type="button"
@@ -59,9 +60,7 @@ export default function Wallet({ onNavigate }) {
           <div className="flex items-start justify-between">
             <div>
               <p className="text-neutral-500 text-xs font-semibold mb-1.5">Tobuya</p>
-              <h2 className="text-neutral-900 text-[26px] font-bold tracking-tight leading-none">
-                $20,200
-              </h2>
+              <h2 className="text-neutral-900 text-[26px] font-bold tracking-tight leading-none">$20,200</h2>
             </div>
             <button
               type="button"

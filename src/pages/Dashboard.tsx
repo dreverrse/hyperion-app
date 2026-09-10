@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   FaceIcon,
   SearchIcon,
@@ -9,17 +10,17 @@ import {
   SpotifyIcon,
 } from '../components/icons';
 
-export default function Dashboard({ onNavigate }) {
+export default function Dashboard() {
   return (
     <main className="flex-1 overflow-y-auto no-scrollbar px-6 pt-2 pb-24 flex flex-col space-y-6">
       <nav className="flex items-center justify-between">
-        <button
-          type="button"
+        <Link
+          to="/profile"
           aria-label="Profile"
           className="w-12 h-12 rounded-full bg-[#1E1F24] flex items-center justify-center text-[#FF6B78] hover:opacity-90 active:scale-95 transition-all"
         >
           <FaceIcon className="w-6 h-6" />
-        </button>
+        </Link>
         <div className="flex items-center space-x-2.5">
           <button
             type="button"
@@ -28,13 +29,13 @@ export default function Dashboard({ onNavigate }) {
           >
             <SearchIcon className="w-5 h-5" />
           </button>
-          <button
-            type="button"
+          <Link
+            to="/notifications"
             aria-label="Notifications"
             className="w-12 h-12 rounded-full bg-[#1E1F24] text-neutral-300 flex items-center justify-center hover:bg-neutral-800 active:scale-95 transition-all"
           >
             <BellIcon className="w-5 h-5" />
-          </button>
+          </Link>
           <div className="w-12 h-12 rounded-full overflow-hidden bg-neutral-700 flex items-center justify-center border-2 border-neutral-700">
             <UserIcon className="w-7 h-7 text-neutral-300 mt-1" />
           </div>
@@ -114,9 +115,9 @@ export default function Dashboard({ onNavigate }) {
       <section className="bg-[#DCE2E6] rounded-3xl p-5 text-neutral-900 pb-16">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-bold text-neutral-900">Transaction</h2>
-          <a className="text-neutral-500 hover:text-neutral-900 text-xs font-semibold" href="#">
+          <Link to="/transactions" className="text-neutral-500 hover:text-neutral-900 text-xs font-semibold">
             See all
-          </a>
+          </Link>
         </div>
         <div className="space-y-3.5">
           <div className="flex items-center justify-between">

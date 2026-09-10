@@ -3,3 +3,8 @@ android/
 *.log
 .DS_Store
 www/
+
+# environment / secrets
+.env
+.env.*
+!.env.example

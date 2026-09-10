@@ -1,12 +1,20 @@
-import { ChevronLeft, Dots, ChartAxisIcon, ChartIcon, ChartPlusIcon, Share } from '../components/icons.jsx';
+import type { CSSProperties } from 'react';
+import { Link } from 'react-router-dom';
+import { ChevronLeft, Dots, ChartAxisIcon, ChartIcon, ChartPlusIcon, Share } from '../components/icons';
 
-const stripedStyle = {
+const stripedStyle: CSSProperties = {
   background: '#f6f8fb',
   backgroundImage:
     'repeating-linear-gradient(-45deg, rgba(255,255,255,.95), rgba(255,255,255,.95) 4px, rgba(224,230,238,.75) 4px, rgba(224,230,238,.75) 8px)',
 };
 
-const MONTHS = [
+interface MonthBar {
+  label: string;
+  height: string;
+  active?: boolean;
+}
+
+const MONTHS: MonthBar[] = [
   { label: 'Jan', height: 'h-16' },
   { label: 'Feb', height: 'h-14' },
   { label: 'Mar', height: 'h-24' },
@@ -15,21 +23,26 @@ const MONTHS = [
   { label: 'Jun', height: 'h-20' },
 ];
 
-export default function ActivityScreen({ onNavigate }) {
+export default function Activity() {
   return (
     <main className="flex-1 overflow-y-auto no-scrollbar px-5 pt-3 pb-24 flex flex-col space-y-4">
       {/* Activity Top Bar */}
       <section className="flex justify-between items-center py-2">
         <div className="flex items-center space-x-3">
-          <button
-            onClick={() => onNavigate('dashboard')}
+          <Link
+            to="/"
+            aria-label="Back to dashboard"
             className="w-10 h-10 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-[#12151b] shadow-sm active:scale-95 transition-transform hover:bg-white"
           >
             <ChevronLeft className="w-4 h-4" />
-          </button>
+          </Link>
           <h1 className="text-[24px] font-bold tracking-tight text-[#12151b]">Today Activity</h1>
         </div>
-        <button className="w-10 h-10 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-[#12151b] shadow-sm active:scale-95 transition-transform hover:bg-white">
+        <button
+          type="button"
+          aria-label="Activity menu"
+          className="w-10 h-10 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-[#12151b] shadow-sm active:scale-95 transition-transform hover:bg-white"
+        >
           <Dots className="w-5 h-5" />
         </button>
       </section>
@@ -44,10 +57,18 @@ export default function ActivityScreen({ onNavigate }) {
             <span className="font-semibold text-[#12151b] text-[16px]">My Spent</span>
           </div>
           <div className="flex items-center space-x-2">
-            <button className="w-9 h-9 rounded-full bg-[#e6ebf0]/60 flex items-center justify-center text-[#12151b]">
+            <button
+              type="button"
+              aria-label="Chart axis"
+              className="w-9 h-9 rounded-full bg-[#e6ebf0]/60 flex items-center justify-center text-[#12151b]"
+            >
               <ChartAxisIcon className="w-4 h-4" />
             </button>
-            <button className="w-9 h-9 rounded-full bg-[#e6ebf0]/60 flex items-center justify-center text-[#12151b]">
+            <button
+              type="button"
+              aria-label="Share spent report"
+              className="w-9 h-9 rounded-full bg-[#e6ebf0]/60 flex items-center justify-center text-[#12151b]"
+            >
               <Share className="w-4 h-4" />
             </button>
           </div>
@@ -63,7 +84,7 @@ export default function ActivityScreen({ onNavigate }) {
               <span className="text-[12px] font-bold leading-tight">$29,500</span>
               <span className="text-[9px] text-gray-400 font-normal">Apr 2023</span>
             </div>
-            <div className="w-2.5 h-2.5 bg-white rounded-full border-2 border-[#ff5c6c] shadow -mt-1 z-30"></div>
+            <div className="w-2.5 h-2.5 bg-white rounded-full border-2 border-[#ff5c6c] shadow -mt-1 z-30" />
           </div>
           <div className="grid grid-cols-6 gap-2.5 items-end h-44 px-1">
             {MONTHS.map((m) => (
@@ -74,11 +95,11 @@ export default function ActivityScreen({ onNavigate }) {
                 {m.active ? (
                   <div className={`w-full ${m.height} rounded-2xl bg-[#ff5c6c] shadow-md flex items-start justify-center pt-1.5`}>
                     <div className="w-3.5 h-3.5 rounded-full bg-white flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-[#ff5c6c]"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#ff5c6c]" />
                     </div>
                   </div>
                 ) : (
-                  <div className={`w-full ${m.height} rounded-2xl border border-white/60`} style={stripedStyle}></div>
+                  <div className={`w-full ${m.height} rounded-2xl border border-white/60`} style={stripedStyle} />
                 )}
                 <span
                   className={`text-[11.5px] mt-3 ${
@@ -103,10 +124,18 @@ export default function ActivityScreen({ onNavigate }) {
             <span className="font-semibold text-[#12151b] text-[16px]">Income</span>
           </div>
           <div className="flex items-center space-x-2">
-            <button className="w-9 h-9 rounded-full bg-[#e6ebf0]/60 flex items-center justify-center text-[#12151b]">
+            <button
+              type="button"
+              aria-label="Chart axis"
+              className="w-9 h-9 rounded-full bg-[#e6ebf0]/60 flex items-center justify-center text-[#12151b]"
+            >
               <ChartAxisIcon className="w-4 h-4" />
             </button>
-            <button className="w-9 h-9 rounded-full bg-[#e6ebf0]/60 flex items-center justify-center text-[#12151b]">
+            <button
+              type="button"
+              aria-label="Share income report"
+              className="w-9 h-9 rounded-full bg-[#e6ebf0]/60 flex items-center justify-center text-[#12151b]"
+            >
               <Share className="w-4 h-4" />
             </button>
           </div>
