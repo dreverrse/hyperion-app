@@ -17,7 +17,7 @@ export default function Settings() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex-1 overflow-y-auto no-scrollbar flex flex-col px-5 pt-3 pb-24 bg-[#151518] space-y-4">
+    <div className="flex-1 overflow-y-auto no-scrollbar flex flex-col px-4 sm:px-6 pt-3 pb-24 bg-[#151518] space-y-4">
       <PageHeader title="Settings" backTo="/profile" dark />
 
       <div className="bg-[#1F2024] border border-neutral-800 rounded-[24px] overflow-hidden">
@@ -26,12 +26,12 @@ export default function Settings() {
             key={item.label}
             onClick={() => item.to !== '#' && navigate(item.to)}
             className={cn(
-              'w-full flex items-center justify-between px-5 py-4 hover:bg-neutral-800/40 transition-colors active:bg-neutral-800/60',
+              'w-full flex items-center justify-between px-4 sm:px-5 py-3.5 sm:py-4 hover:bg-neutral-800/40 transition-colors active:bg-neutral-800/60',
               i < SETTINGS_ITEMS.length - 1 && 'border-b border-neutral-800'
             )}
           >
-            <span className="text-[15px] text-white font-medium">{item.label}</span>
-            <ChevronLeft className="w-4 h-4 text-neutral-500 rotate-180" />
+            <span className="text-sm sm:text-[15px] text-white font-medium">{item.label}</span>
+            <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-500 rotate-180" />
           </button>
         ))}
       </div>

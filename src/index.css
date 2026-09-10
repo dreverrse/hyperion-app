@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
   body {
-    @apply bg-slate-900 flex justify-center items-center min-h-screen p-0 sm:p-4 text-slate-800 antialiased selection:bg-brand-coral selection:text-white;
+    @apply bg-[#121214] min-h-screen min-h-[100dvh] text-slate-800 antialiased selection:bg-brand-coral selection:text-white;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
 }
 
@@ -14,9 +19,6 @@
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-body {
-  -webkit-tap-highlight-color: transparent;
 }
 .avatar-ring {
   box-shadow: 0 0 0 2px #ff6b78;

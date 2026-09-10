@@ -35,32 +35,32 @@ export default function WalletDetail() {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto no-scrollbar flex flex-col px-5 pt-3 pb-24 bg-[#151518] space-y-4">
+    <div className="flex-1 overflow-y-auto no-scrollbar flex flex-col px-4 sm:px-6 pt-3 pb-24 bg-[#151518] space-y-4">
       <PageHeader title={wallet.name} backTo="/profile" dark />
 
       {/* Wallet Card */}
       <div
-        className="rounded-[24px] px-5 py-6 text-white relative overflow-hidden"
+        className="rounded-[24px] px-4 sm:px-5 py-5 sm:py-6 text-white relative overflow-hidden"
         style={{ backgroundColor: wallet.accent }}
       >
-        <p className="text-xs uppercase tracking-widest opacity-70">{wallet.type}</p>
-        <p className="text-3xl font-bold mt-4">${wallet.balance.toLocaleString()}</p>
-        <p className="text-sm opacity-60 mt-2">Balance</p>
+        <p className="text-[10px] sm:text-xs uppercase tracking-widest opacity-70">{wallet.type}</p>
+        <p className="text-2xl sm:text-3xl font-bold mt-3 sm:mt-4">${wallet.balance.toLocaleString()}</p>
+        <p className="text-xs sm:text-sm opacity-60 mt-1.5 sm:mt-2">Balance</p>
       </div>
 
       {/* Transactions */}
-      <h3 className="text-sm font-medium text-neutral-400 uppercase tracking-wider">Recent Transactions</h3>
+      <h3 className="text-xs sm:text-sm font-medium text-neutral-400 uppercase tracking-wider">Recent Transactions</h3>
       <div className="space-y-3">
         {transactions.map((tx) => {
           const isIncome = tx.type === 'income';
           return (
             <div
               key={tx.id}
-              className="bg-[#1F2024] border border-neutral-800 rounded-[24px] px-5 py-4 flex items-center justify-between"
+              className="bg-[#1F2024] border border-neutral-800 rounded-[24px] px-4 sm:px-5 py-3.5 sm:py-4 flex items-center justify-between"
             >
               <div className="flex items-center space-x-3 min-w-0">
-                <div className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0">
-                  <span className="text-lg">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0">
+                  <span className="text-base sm:text-lg">
                     {tx.categoryId === 'Food & Drinks' ? '🍕' :
                      tx.categoryId === 'Shopping' ? '🛍️' :
                      tx.categoryId === 'Transportation' ? '🚗' :
@@ -69,11 +69,11 @@ export default function WalletDetail() {
                   </span>
                 </div>
                 <div className="min-w-0">
-                   <p className="text-[15px] font-medium text-white truncate">{tx.title}</p>
-                   <p className="text-xs text-neutral-500">{tx.categoryId ?? '—'} · {formatTxDate(tx.date)}</p>
+                  <p className="text-sm sm:text-[15px] font-medium text-white truncate">{tx.title}</p>
+                  <p className="text-[11px] sm:text-xs text-neutral-500">{tx.categoryId ?? '—'} · {formatTxDate(tx.date)}</p>
                 </div>
               </div>
-              <span className={`text-[15px] font-semibold flex-shrink-0 ${isIncome ? 'text-green-500' : 'text-white'}`}>
+              <span className={`text-sm sm:text-[15px] font-semibold flex-shrink-0 ml-2 ${isIncome ? 'text-green-500' : 'text-white'}`}>
                 {isIncome ? '+' : '-'}${Math.abs(tx.amount).toFixed(2)}
               </span>
             </div>
