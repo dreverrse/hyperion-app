@@ -26,8 +26,8 @@ export default function AppShell() {
     pathname === '/' ? 'dashboard' : pathname === '/wallet' ? 'wallet' : pathname === '/activity' ? 'activity' : 'dashboard';
 
   return (
-    <div className="relative w-full h-screen h-[100dvh] bg-[#121214] overflow-hidden flex flex-col">
-      <div className="flex-1 overflow-y-auto no-scrollbar pb-20">
+    <div className="relative w-full min-h-screen min-h-[100dvh] bg-brand-black overflow-hidden flex flex-col">
+      <div className="flex-1 overflow-y-auto no-scrollbar pb-24 lg:pb-0">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/wallet" element={<Wallet />} />
@@ -46,15 +46,15 @@ export default function AppShell() {
         </Routes>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-safe sm:px-6">
+      <div className="fixed bottom-0 left-0 right-0 z-50 px-4 lg:px-6 safe-bottom lg:hidden">
         <BottomNav
           active={active}
           onNavigate={(screen) => navigate(screen === 'dashboard' ? '/' : `/${screen}`)}
         />
       </div>
 
-      <div className="fixed bottom-1 inset-x-0 flex justify-center pointer-events-none z-40 pb-safe">
-        <div className="w-32 h-1 bg-neutral-600 rounded-full" />
+      <div className="fixed bottom-0 inset-x-0 flex justify-center pointer-events-none z-40 lg:hidden safe-bottom">
+        <div className="w-32 h-0.5 bg-neutral-600 rounded-full" />
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ export default function Notifications() {
   };
 
   return (
-    <div className="flex flex-col px-4 sm:px-6 pt-3 bg-[#151518] space-y-4">
+    <div className="flex flex-col px-4 py-3 safe-top space-y-4 lg:px-6 lg:space-y-5 bg-brand-black">
       <PageHeader
         title="Notifications"
         backTo="/settings"
@@ -32,40 +32,40 @@ export default function Notifications() {
         right={
           <button
             onClick={handleMarkAllRead}
-            className="w-10 flex items-center justify-center text-xs sm:text-sm text-brand-coral font-medium active:scale-95 transition-all"
+            className="px-4 py-2 text-sm font-medium text-brand-coral active:scale-95 transition-all touch-target"
           >
             Read all
           </button>
         }
       />
 
-      <div className="space-y-3">
+      <div className="space-y-3 lg:space-y-4">
         {notifications.map((n) => (
           <button
             key={n.id}
             onClick={() => !n.isRead && handleMarkRead(n.id)}
             className={cn(
-              'w-full text-left bg-[#1F2024] border border-neutral-800 rounded-[24px] px-4 sm:px-5 py-3.5 sm:py-4 transition-colors active:bg-neutral-800/40',
+              'w-full text-left bg-brand-card border border-neutral-800 rounded-[24px] px-4 lg:px-5 py-4 lg:py-5 transition-colors active:bg-neutral-800/40',
               !n.isRead && 'border-l-2 border-l-brand-coral'
             )}
           >
-            <div className="flex items-start justify-between gap-2">
-              <p className={cn('text-sm sm:text-[15px] font-medium leading-snug', n.isRead ? 'text-neutral-400' : 'text-white')}>
+            <div className="flex items-start justify-between gap-2 lg:gap-3">
+              <p className={cn('text-base lg:text-[16px] font-medium leading-snug', n.isRead ? 'text-neutral-400' : 'text-white')}>
                 {n.title}
               </p>
               {!n.isRead && (
-                <span className="mt-1 w-2 h-2 rounded-full bg-brand-coral flex-shrink-0" />
+                <span className="mt-1.5 w-2.5 h-2.5 rounded-full bg-brand-coral flex-shrink-0" />
               )}
             </div>
-            <p className="text-xs sm:text-sm text-neutral-500 mt-1">{n.message}</p>
-            <p className="text-[11px] sm:text-xs text-neutral-600 mt-2">
+            <p className="text-sm lg:text-base text-neutral-500 mt-2">{n.message}</p>
+            <p className="text-xs lg:text-sm text-neutral-600 mt-3">
               {new Date(n.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
             </p>
           </button>
         ))}
 
         {notifications.length === 0 && (
-          <p className="text-center text-neutral-500 py-12 text-sm">No notifications yet</p>
+          <p className="text-center text-neutral-500 py-16 text-sm">No notifications yet</p>
         )}
       </div>
     </div>

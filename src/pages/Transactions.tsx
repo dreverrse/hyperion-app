@@ -30,7 +30,7 @@ export default function Transactions() {
   }, [query]);
 
   return (
-    <div className="flex flex-col px-4 sm:px-6 pt-3 bg-[#151518] space-y-4">
+    <div className="flex flex-col px-4 py-3 safe-top space-y-4 lg:px-6 lg:space-y-5 bg-brand-black">
       <PageHeader
         title="Transactions"
         backTo="/profile"
@@ -38,22 +38,22 @@ export default function Transactions() {
         right={
           <button
             onClick={() => navigate('/transaction/new')}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E1F24] border border-neutral-800 text-neutral-300 hover:text-white active:scale-95 transition-all flex items-center justify-center"
+            className="w-11 h-11 rounded-full bg-brand-surface border border-neutral-800 text-neutral-300 hover:text-white active:scale-95 transition-all flex items-center justify-center touch-target"
           >
-            <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <Plus className="w-5 h-5" />
           </button>
         }
       />
 
       {/* Search */}
       <div className="relative">
-        <SearchIcon className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+        <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-500" />
         <input
           type="text"
           placeholder="Search transactions..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full pl-10 sm:pl-11 pr-4 py-2.5 sm:py-3 bg-neutral-800/50 border border-neutral-700 rounded-[16px] text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:border-brand-coral focus:ring-1 focus:ring-brand-coral/40 transition-all"
+          className="w-full pl-12 pr-4 py-3.5 bg-neutral-800/50 border border-neutral-700 rounded-[16px] text-base text-white placeholder:text-neutral-500 focus:outline-none focus:border-brand-coral focus:ring-1 focus:ring-brand-coral/40 transition-all touch-target"
         />
       </div>
 
@@ -64,11 +64,11 @@ export default function Transactions() {
           return (
             <div
               key={tx.id}
-              className="bg-[#1F2024] border border-neutral-800 rounded-[24px] px-4 sm:px-5 py-3.5 sm:py-4 flex items-center justify-between active:bg-neutral-800/40 transition-colors"
+              className="bg-brand-card border border-neutral-800 rounded-[24px] px-4 lg:px-5 py-4 lg:py-5 flex items-center justify-between active:bg-neutral-800/40 transition-colors touch-target"
             >
-              <div className="flex items-center space-x-3 min-w-0">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0">
-                  <span className="text-base sm:text-lg">
+              <div className="flex items-center space-x-3 lg:space-x-4 min-w-0">
+                <div className="w-11 h-11 lg:w-12 lg:h-12 rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 touch-target">
+                  <span className="text-lg lg:text-xl">
                     {tx.categoryId === 'Food & Drinks' ? '🍕' :
                      tx.categoryId === 'Shopping' ? '🛍️' :
                      tx.categoryId === 'Transportation' ? '🚗' :
@@ -77,11 +77,11 @@ export default function Transactions() {
                   </span>
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm sm:text-[15px] font-medium text-white truncate">{tx.title}</p>
-                  <p className="text-[11px] sm:text-xs text-neutral-500">{tx.categoryId ?? '—'} · {formatTxDate(tx.date)}</p>
+                  <p className="text-base lg:text-[16px] font-medium text-white truncate">{tx.title}</p>
+                  <p className="text-xs lg:text-sm text-neutral-500">{tx.categoryId ?? '—'} · {formatTxDate(tx.date)}</p>
                 </div>
               </div>
-              <span className={`text-sm sm:text-[15px] font-semibold flex-shrink-0 ml-2 ${isIncome ? 'text-green-500' : 'text-white'}`}>
+              <span className={`text-base lg:text-[16px] font-semibold flex-shrink-0 ml-3 ${isIncome ? 'text-green-500' : 'text-white'}`}>
                 {isIncome ? '+' : '-'}${Math.abs(tx.amount).toFixed(2)}
               </span>
             </div>
@@ -89,7 +89,7 @@ export default function Transactions() {
         })}
 
         {transactions.length === 0 && (
-          <p className="text-center text-neutral-500 py-12 text-sm">No transactions found</p>
+          <p className="text-center text-neutral-500 py-16 text-sm">No transactions found</p>
         )}
       </div>
     </div>

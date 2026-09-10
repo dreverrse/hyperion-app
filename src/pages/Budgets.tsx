@@ -22,7 +22,7 @@ export default function Budgets() {
   }, []);
 
   return (
-    <div className="flex flex-col px-4 sm:px-6 pt-3 bg-[#151518] space-y-4">
+    <div className="flex flex-col px-4 py-3 safe-top space-y-4 lg:px-6 lg:space-y-5 bg-brand-black">
       <PageHeader
         title="Budgets"
         backTo="/profile"
@@ -30,23 +30,23 @@ export default function Budgets() {
         right={
           <button
             onClick={() => navigate('/budgets/new')}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E1F24] border border-neutral-800 text-neutral-300 hover:text-white active:scale-95 transition-all flex items-center justify-center"
+            className="w-11 h-11 rounded-full bg-brand-surface border border-neutral-800 text-neutral-300 hover:text-white active:scale-95 transition-all flex items-center justify-center touch-target"
           >
-            <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <Plus className="w-5 h-5" />
           </button>
         }
       />
 
-      <div className="space-y-3">
+      <div className="space-y-3 lg:space-y-4">
         {budgets.map((b) => {
           const percent = b.amount > 0 ? Math.min((b.spent / b.amount) * 100, 100) : 0;
           const color = CATEGORY_COLORS[b.category] ?? '#ea580c';
 
           return (
-            <div key={b.id} className="bg-[#1F2024] border border-neutral-800 rounded-[24px] px-4 sm:px-5 py-3.5 sm:py-4 space-y-3">
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-sm sm:text-[15px] font-medium text-white">{b.category}</span>
-                <span className="text-xs sm:text-sm text-neutral-400 flex-shrink-0">
+            <div key={b.id} className="bg-brand-card border border-neutral-800 rounded-[24px] px-4 lg:px-5 py-4 lg:py-5 space-y-3">
+              <div className="flex items-center justify-between gap-2 lg:gap-3">
+                <span className="text-base lg:text-[16px] font-medium text-white">{b.category}</span>
+                <span className="text-xs lg:text-sm text-neutral-400 flex-shrink-0">
                   ${b.spent.toFixed(2)} <span className="text-neutral-600">/ ${b.amount.toFixed(2)}</span>
                 </span>
               </div>
@@ -56,13 +56,13 @@ export default function Budgets() {
                   style={{ width: `${percent}%`, backgroundColor: color }}
                 />
               </div>
-              <p className="text-[11px] sm:text-xs text-neutral-500">{percent.toFixed(0)}% used</p>
+              <p className="text-xs lg:text-sm text-neutral-500">{percent.toFixed(0)}% used</p>
             </div>
           );
         })}
 
         {budgets.length === 0 && (
-          <p className="text-center text-neutral-500 py-12 text-sm">No budgets yet</p>
+          <p className="text-center text-neutral-500 py-16 text-sm">No budgets yet</p>
         )}
       </div>
     </div>

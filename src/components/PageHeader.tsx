@@ -23,26 +23,26 @@ export default function PageHeader({ title, backTo, dark = false, right, classNa
   };
 
   return (
-    <header className={cn('flex items-center justify-between px-4 sm:px-6 pt-3', className)}>
-      <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
+    <header className={cn('flex items-center justify-between px-4 py-3 safe-top', className)}>
+      <div className="flex items-center space-x-3 min-w-0">
         <button
           type="button"
           aria-label="Back"
           onClick={goBack}
           className={cn(
-            'w-9 h-9 sm:w-10 sm:h-10 rounded-full border flex items-center justify-center flex-shrink-0 active:scale-95 transition-all',
+            'w-11 h-11 rounded-full border flex items-center justify-center flex-shrink-0 active:scale-95 transition-all touch-target',
             dark
-              ? 'bg-[#1E1F24] border-neutral-800 text-neutral-300 hover:text-white'
-              : 'bg-white/70 backdrop-blur-sm border-neutral-200 text-[#12151b] hover:bg-white',
+              ? 'bg-brand-surface border-neutral-800 text-neutral-300 hover:text-white'
+              : 'bg-white/70 backdrop-blur-sm border-neutral-200 text-brand-black hover:bg-white',
           )}
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeft className="w-5 h-5" />
         </button>
-        <h1 className={cn('text-lg sm:text-xl font-bold tracking-tight truncate', dark ? 'text-white' : 'text-[#12151b]')}>
+        <h1 className={cn('text-lg font-bold tracking-tight truncate', dark ? 'text-white' : 'text-brand-black')}>
           {title}
         </h1>
       </div>
-      <div className="w-9 sm:w-10 flex items-center justify-center flex-shrink-0">{right}</div>
+      <div className="w-11 flex items-center justify-center flex-shrink-0">{right}</div>
     </header>
   );
 }
