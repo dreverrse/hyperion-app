@@ -22,38 +22,38 @@ export default function AppShell() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const active: ScreenName | undefined =
-    pathname === '/' ? 'dashboard' : pathname === '/wallet' ? 'wallet' : pathname === '/activity' ? 'activity' : undefined;
+  const active: ScreenName =
+    pathname === '/' ? 'dashboard' : pathname === '/wallet' ? 'wallet' : pathname === '/activity' ? 'activity' : 'dashboard';
 
   return (
     <div className="relative w-full h-screen h-[100dvh] bg-[#121214] overflow-hidden flex flex-col">
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/wallet" element={<Wallet />} />
-        <Route path="/wallet/:id" element={<WalletDetail />} />
-        <Route path="/activity" element={<Activity />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/budgets" element={<Budgets />} />
-        <Route path="/goals" element={<Goals />} />
-        <Route path="/cards" element={<Cards />} />
-        <Route path="/transactions" element={<Transactions />} />
-        <Route path="/transaction/new" element={<TransactionForm />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/analytics" element={<Analytics />} />
-      </Routes>
+      <div className="flex-1 overflow-y-auto no-scrollbar pb-20">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/wallet" element={<Wallet />} />
+          <Route path="/wallet/:id" element={<WalletDetail />} />
+          <Route path="/activity" element={<Activity />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/budgets" element={<Budgets />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/cards" element={<Cards />} />
+          <Route path="/transactions" element={<Transactions />} />
+          <Route path="/transaction/new" element={<TransactionForm />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/analytics" element={<Analytics />} />
+        </Routes>
+      </div>
 
-      {active && (
-        <div className="absolute bottom-2 inset-x-4 sm:inset-x-6 z-40 pointer-events-none">
-          <BottomNav
-            active={active}
-            onNavigate={(screen) => navigate(screen === 'dashboard' ? '/' : `/${screen}`)}
-          />
-        </div>
-      )}
+      <div className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-safe sm:px-6">
+        <BottomNav
+          active={active}
+          onNavigate={(screen) => navigate(screen === 'dashboard' ? '/' : `/${screen}`)}
+        />
+      </div>
 
-      <div className="absolute bottom-0 inset-x-0 flex justify-center pb-1 pointer-events-none z-50 pb-safe">
+      <div className="fixed bottom-1 inset-x-0 flex justify-center pointer-events-none z-40 pb-safe">
         <div className="w-32 h-1 bg-neutral-600 rounded-full" />
       </div>
     </div>

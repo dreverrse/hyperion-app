@@ -12,7 +12,7 @@ import {
 
 export default function Dashboard() {
   return (
-    <main className="flex-1 overflow-y-auto no-scrollbar px-4 sm:px-6 pt-2 pb-24 flex flex-col space-y-4 sm:space-y-6">
+    <main className="px-4 sm:px-6 pt-2 flex flex-col space-y-4 sm:space-y-6">
       <nav className="flex items-center justify-between">
         <Link
           to="/profile"

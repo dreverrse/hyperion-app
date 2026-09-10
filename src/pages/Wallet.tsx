@@ -36,7 +36,7 @@ function ContributorBar({ index }: { index: number }) {
 
 export default function Wallet() {
   return (
-    <main className="flex-1 overflow-y-auto no-scrollbar space-y-3 sm:space-y-4 pb-24 flex flex-col">
+    <main className="space-y-3 sm:space-y-4 flex flex-col">
       <nav className="flex items-center justify-between px-4 sm:px-6 pt-2">
         <Link
           to="/"

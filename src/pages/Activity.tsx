@@ -25,7 +25,7 @@ const MONTHS: MonthBar[] = [
 
 export default function Activity() {
   return (
-    <main className="flex-1 overflow-y-auto no-scrollbar px-4 sm:px-5 pt-3 pb-24 flex flex-col space-y-3 sm:space-y-4">
+    <main className="px-4 sm:px-5 pt-3 flex flex-col space-y-3 sm:space-y-4">
       {/* Activity Top Bar */}
       <section className="flex justify-between items-center py-1 sm:py-2">
         <div className="flex items-center space-x-2 sm:space-x-3">

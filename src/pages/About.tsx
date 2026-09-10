@@ -3,7 +3,7 @@ import { APP_NAME, APP_VERSION } from '../lib/constants';
 
 export default function About() {
   return (
-    <div className="flex-1 overflow-y-auto no-scrollbar flex flex-col px-4 sm:px-6 pt-3 pb-24 bg-[#151518] space-y-4">
+    <div className="flex flex-col px-4 sm:px-6 pt-3 bg-[#151518] space-y-4">
       <PageHeader title="About" backTo="/settings" dark />
 
       {/* Logo Card */}

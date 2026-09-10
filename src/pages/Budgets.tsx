@@ -22,7 +22,7 @@ export default function Budgets() {
   }, []);
 
   return (
-    <div className="flex-1 overflow-y-auto no-scrollbar flex flex-col px-4 sm:px-6 pt-3 pb-24 bg-[#151518] space-y-4">
+    <div className="flex flex-col px-4 sm:px-6 pt-3 bg-[#151518] space-y-4">
       <PageHeader
         title="Budgets"
         backTo="/profile"

@@ -13,7 +13,7 @@ export default function Analytics() {
   const [bars] = useState(mockActivityBars);
 
   return (
-    <div className="flex-1 overflow-y-auto no-scrollbar bg-[#f5f5f7] flex flex-col">
+    <div className="bg-[#f5f5f7] flex flex-col">
       <div className="px-4 sm:px-6 pt-3 pb-2 flex items-center justify-between">
         <button
           onClick={() => navigate('/profile')}
@@ -27,7 +27,7 @@ export default function Analytics() {
         </button>
       </div>
 
-      <div className="flex-1 px-4 sm:px-6 pt-3 pb-24 flex flex-col space-y-4">
+      <div className="px-4 sm:px-6 pt-3 flex flex-col space-y-4">
         {/* Activity Card */}
         <div className="bg-white rounded-[24px] p-4 sm:p-5 shadow-sm">
           <p className="text-sm sm:text-[15px] font-semibold text-[#12151b]">Activity</p>
